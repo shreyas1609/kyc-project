@@ -7,7 +7,7 @@ import time
 # ---------- PAGE CONFIG ----------
 st.set_page_config(page_title="KYC Banking System", layout="wide")
 
-# ---------- LIGHT BANK UI ----------
+# ---------- DARK BANK UI ----------
 st.markdown("""
 <style>
 .stApp {
@@ -38,6 +38,7 @@ h1, h2, h3 {
 }
 </style>
 """, unsafe_allow_html=True)
+
 # ---------- FILE SETUP ----------
 file_path = "kyc_data.csv"
 
