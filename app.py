@@ -7,24 +7,37 @@ import time
 # ---------- PAGE CONFIG ----------
 st.set_page_config(page_title="KYC Banking System", layout="wide")
 
-# ---------- DARK BANK UI ----------
+# ---------- LIGHT BANK UI ----------
 st.markdown("""
 <style>
-body {
-    background-color: #0E1117;
-}
 .stApp {
-    background-color: #0E1117;
-    color: white;
+    background-color: #F5F7FA;
+    color: #000000;
 }
+
+/* Sidebar */
+section[data-testid="stSidebar"] {
+    background-color: #E8EEF7;
+}
+
+/* Buttons */
 .stButton>button {
-    background-color: #1f77b4;
+    background-color: #2E86C1;
     color: white;
     border-radius: 8px;
 }
+
+/* Input boxes */
+.stTextInput>div>div>input {
+    background-color: #FFFFFF;
+}
+
+/* Headers */
+h1, h2, h3 {
+    color: #2C3E50;
+}
 </style>
 """, unsafe_allow_html=True)
-
 # ---------- FILE SETUP ----------
 file_path = "kyc_data.csv"
 
