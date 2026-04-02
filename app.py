@@ -6,6 +6,17 @@ import datetime
 
 st.set_page_config(page_title="Telsica KYC System", layout="wide")
 
+# ---------- HEADER WITH LOGO ----------
+col1, col2 = st.columns([6, 2])
+
+with col1:
+    st.title("🧾 Telsica KYC Submission Portal")
+
+with col2:
+    logo_path = os.path.join(os.getcwd(), "logo.png")
+    if os.path.exists(logo_path):
+        st.image(logo_path, width=180)
+
 # ---------- FILE SETUP ----------
 data_file = "kyc_data.csv"
 
@@ -22,8 +33,6 @@ if "admin_logged_in" not in st.session_state:
 # ======================================================
 # 🌐 CUSTOMER KYC FORM (NO LOGIN)
 # ======================================================
-
-st.title("🧾 Telsica KYC Submission Portal")
 
 name = st.text_input("Full Name")
 address = st.text_input("Address")
@@ -82,12 +91,11 @@ if not st.session_state.admin_logged_in:
             st.sidebar.error("Invalid credentials")
 
 # ======================================================
-# 🧑‍💼 ADMIN PANEL (AFTER LOGIN)
+# 🧑‍💼 ADMIN PANEL
 # ======================================================
 
 if st.session_state.admin_logged_in:
 
-    # 🔴 Logout Button
     if st.sidebar.button("Logout"):
         st.session_state.admin_logged_in = False
         st.sidebar.success("Logged out")
