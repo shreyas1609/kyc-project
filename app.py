@@ -64,28 +64,35 @@ if st.button("Submit KYC"):
 st.markdown("---")
 
 # ======================================================
-# 🔐 ADMIN LOGIN (SIDEBAR ONLY)
+# 🔐 ADMIN LOGIN (SIDEBAR)
 # ======================================================
 
-st.sidebar.title("Admin Login")
+st.sidebar.title("Admin Panel")
 
-admin_user = st.sidebar.text_input("Username")
-admin_pass = st.sidebar.text_input("Password", type="password")
+if not st.session_state.admin_logged_in:
+    admin_user = st.sidebar.text_input("Username")
+    admin_pass = st.sidebar.text_input("Password", type="password")
 
-if st.sidebar.button("Login"):
-    if admin_user == "admin" and admin_pass == "1234":
-        st.session_state.admin_logged_in = True
-        st.sidebar.success("Logged in")
-    else:
-        st.sidebar.error("Invalid credentials")
+    if st.sidebar.button("Login"):
+        if admin_user == "admin" and admin_pass == "1234":
+            st.session_state.admin_logged_in = True
+            st.sidebar.success("Logged in successfully")
+            st.rerun()
+        else:
+            st.sidebar.error("Invalid credentials")
 
 # ======================================================
-# 🧑‍💼 ADMIN PANEL
+# 🧑‍💼 ADMIN PANEL (AFTER LOGIN)
 # ======================================================
 
 if st.session_state.admin_logged_in:
 
-    st.sidebar.markdown("---")
+    # 🔴 Logout Button
+    if st.sidebar.button("Logout"):
+        st.session_state.admin_logged_in = False
+        st.sidebar.success("Logged out")
+        st.rerun()
+
     menu = st.sidebar.radio("Menu", ["Dashboard", "Verify KYC", "Analysis"])
 
     if menu == "Dashboard":
